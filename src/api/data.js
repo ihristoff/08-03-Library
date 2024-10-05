@@ -1,7 +1,7 @@
 import * as api from './api.js';
 
-const host = 'https://zero8-03-library.onrender.com'
-api.settings.host = 'https://zero8-03-library.onrender.com';
+const host = 'https://zero8-03-library-web-server.onrender.com'
+api.settings.host = 'https://zero8-03-library-web-server.onrender.com';
 
 export const login = api.login;
 export const register = api.register;
