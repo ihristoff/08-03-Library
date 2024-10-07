@@ -19,8 +19,10 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: 20.x
-    - name: Install Node and Run Tests
-      run: npm install &&  npx playwright install   && npm test 
+    - name: Install Node 
+      run: npm install
+    - name: Start frontend
+      run: npm start
     - name: Install Playwright
       run:   npx playwright install 
     - name: Run Tests
