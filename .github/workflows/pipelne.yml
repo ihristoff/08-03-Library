@@ -20,7 +20,7 @@ jobs:
       with:
         node-version: 20.x
     - name: Install Node and Run Tests
-      run: npm install && npm test 
+      run: npm install &&  npx playwright install   && npm test 
       
 
   
