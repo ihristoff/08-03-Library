@@ -43,6 +43,7 @@ test('Login with valid credentials', async ({ page }) => {
   await page.fill('input[name="password"]', '123456');
 
   await page.click('input[type="submit"]');
+  await page.waitForNavigation();
 
   await page.$('a[href="/catalog"]');
   expect(page.url()).toBe('http://localhost:3000/catalog');
@@ -168,7 +169,15 @@ test('Verify visibility of Logout button after user login', async ({ page }) => 
   await page.fill('input[name="password"]', '123456');
   await page.click('input[type="submit"]');
 
+  // Wait for navigation to complete
+  await page.waitForNavigation();
+
+  // Check for the Logout button
   const logoutLink = await page.$('a[href="javascript:void(0)"]');
+
+  // Ensure the logout link exists before checking visibility
+  expect(logoutLink).toBeTruthy(); // Check if the element is found
+
 
   const isLogoutLinkVisible = await logoutLink.isVisible();
 
@@ -184,6 +193,7 @@ test('Verify redirection of Logout link after user login', async ({ page }) => {
 
   const logoutLink = await page.$('a[href="javascript:void(0)"]');
   await logoutLink.click();
+  
 
   const redirectedURL = page.url();
   expect(redirectedURL).toBe('http://localhost:3000/catalog');
